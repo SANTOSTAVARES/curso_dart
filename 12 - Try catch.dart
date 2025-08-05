@@ -54,11 +54,26 @@ void main() {
     // throw Exception('Ocorreu um erro xpto'); // retornar um novo erro
 
     throw CustomError('erro customizado');
-    
+
   }
 }
 
 class CustomError implements Exception {
   final String error;
   CustomError(this.error);
+}
+
+//Ex:
+void main() {
+  
+  String user = 'admin';
+  String pass = '123';
+
+  if(pass.length <= 6) throw PasswordLengthError();
+  
+}
+
+class PasswordLengthError implements Exception {
+  PasswordLengthError();
+  
 }
