@@ -1,4 +1,6 @@
-//Ex:
+//Em nenhum exemplo abaixo, foi utilizado o Finaly que está disponível no Try catch
+
+//Exemplo:
 void main() {
 
     try {
@@ -9,7 +11,7 @@ void main() {
     }
 }
 
-//Ex:
+//Exemplo:
 void main() {
 
     try {
@@ -19,7 +21,7 @@ void main() {
     }
 }
 
-//Ex:
+//Exemplo:
 void main() {
 
     try {
@@ -30,7 +32,7 @@ void main() {
     }
 }
 
-//Ex:
+//Exemplo:
 void main() {
   try { // tentar alguma coisa
     print((2 / 0).toInt());
@@ -44,7 +46,7 @@ void main() {
   }
 }
 
-//Ex:
+//Exemplo:
 void main() {
   try { // tentar alguma coisa
     print((2 / 0).toInt());
@@ -63,7 +65,7 @@ class CustomError implements Exception {
   CustomError(this.error);
 }
 
-//Ex:
+//Exemplo:
 void main() {
   
   String user = 'admin';
@@ -76,4 +78,35 @@ void main() {
 class PasswordLengthError implements Exception {
   PasswordLengthError();
   
+}
+
+//Exemplo:
+void main() {
+  
+  Login login = Login();
+
+  try {
+    login.logar();
+  } on PasswordLengthError catch (e) {
+    print('Falhou ao logar');
+  } catch(e) {
+    print('Outro erro');
+  }
+
+}
+
+class Login {
+
+  void logar() {
+
+    String user = 'admin';
+    String pass = '123';
+
+    if(pass.length <= 6) throw PasswordLengthError();
+  }
+}
+
+class PasswordLengthError implements Exception {
+  PasswordLengthError();
+
 }
